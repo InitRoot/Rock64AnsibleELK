@@ -1,0 +1,12 @@
+[Unit]
+Description=Kibana custom service unit
+
+[Service]
+Type=simple
+#EnvironmentFile=-/etc/default/kibana
+ExecStart=/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" 
+Restart=always
+WorkingDirectory=/opt/kibana/bin
+
+[Install]
+WantedBy=multi-user.target
