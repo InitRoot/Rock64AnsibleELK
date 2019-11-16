@@ -74,16 +74,6 @@
       group: root
       mode: 0755
 
-  - name: Config | custom  template
-    copy:
-      src: intrusions.json
-      dest: /etc/logstash/templates/
-
-  - name: Config | elastic templates
-    copy:
-      src: elasticsearch-template.json
-      dest: /etc/logstash/templates/
-
   - name: Config | configuration file
     copy:
       src: 40-router-input.conf
