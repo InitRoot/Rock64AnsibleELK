@@ -1,9 +1,9 @@
 # Rock64AnsibleELK
 
-ROCK64 SETUP:
+##ROCK64 SETUP:
 
 
-PREP SETUP:
+##PREP SETUP:
 	sudo apt-get install npm ant texinfo default-jdk build-essential rbenv sshpass
 	sudo apt-get install ruby-dev
 	echo "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb buster main" | sudo tee /etc/apt/sources.list.d/adoptopenjdk.list
@@ -11,16 +11,16 @@ PREP SETUP:
 	sudo update-alternatives --config java
 	Set correct imezone on Armbian
    
-ANSIBLE:
+##ANSIBLE:
 	- Run the ansible GIT I modified.
 
-ELASTIC CONFIG (TO-ADD):
+##ELASTIC CONFIG (TO-ADD):
 	xpack.ml.enabled: false
 
-ELK STACK SETUP:
+##ELK STACK SETUP:
 	Run the modified ansible file, remove failed items.
 
-LOGSTASH:
+##LOGSTASH:
 	.//usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
 	gem install ci_reporter_rspec -v '1.0.0'
 	gem install nokogiri -v '1.10.5'
@@ -28,7 +28,7 @@ LOGSTASH:
 	systemctl daemon-reload
 	systemctl enable logstash
 
-KIBANA:
+##KIBANA:
 	wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 	dpkg -i node_latest_armhf.deb
 
@@ -36,29 +36,29 @@ KIBANA:
 	sudo mv -r /opt/kibana-6.5.4-linux-x86_64 /opt/kibana
 
 	 
-	#Replace Kibana node with our one
+	Replace Kibana node with our one
 	sudo rm /opt/kibana/node/bin/node
 	sudo rm /opt/kibana/node/bin/npm
 
-	#Symlink it
+	Symlink it
 	sudo ln -s /usr/local/bin/node /opt/kibana/node/bin/node
 	sudo ln -s /usr/local/bin/npm /opt/kibana/node/bin/npm
 
-	#Ensure older node is used
+	Ensure older node is used
 	sudo n install 8.14.0
 
-	#Test run service for kibana
+	Test run service for kibana
 	/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" --allow-root
 
 	systemctl status kibana
  
-FILEBEAT:
+##FILEBEAT:
 	scp .\filebeat-oss-6.5.4-armhf.deb root@192.168.1.109:/home/root/
 	dpkg -i filebeat-oss-6.5.4-armhf.deb
 
-logstash-plugin update logstash-input-beats
+	logstash-plugin update logstash-input-beats
 
-OSSEC:
+##OSSEC:
 	- Install OSSEC from source
 
 	wget https://github.com/ossec/ossec-hids/archive/3.3.0.tar.gz
@@ -72,7 +72,7 @@ OSSEC:
 	 
 	Install wazuh plugin
  
-LINKS:
+##LINKS:
   https://practicalassurance.com/blog/ossec-elk-stack-integration/  
   https://ackcent.com/blog/elk-on-a-raspberry-pi/
   https://github.com/MHHK89/Snort-RPi-ELK
