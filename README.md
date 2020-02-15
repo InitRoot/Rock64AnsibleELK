@@ -13,22 +13,22 @@
    
 ## ANSIBLE:
 Run the ansible setups. Short descriptions below for each file.
-* elk-rpi.yml - Base playbook. Setup variables under /vars and enable correct roles.
-* filebeat.yml - Filebeat config file for OSSEC.
-* hosts - Setup your IP and account used for Ansible. You'll see its currently defined as [RPI2]
-* logstash.yml - logstash config file.
-* ossec.conf - Ossec config file for beats. Should be under roles/files.
-* /vars/vars-rpi.yml - Playbook for ansible. Modify here
-* /roles/... - Setup tasks to run for each role here.
+	* elk-rpi.yml - Base playbook. Setup variables under /vars and enable correct roles.
+	* filebeat.yml - Filebeat config file for OSSEC.
+	* hosts - Setup your IP and account used for Ansible. You'll see its currently defined as [RPI2]
+	* logstash.yml - logstash config file.
+	* ossec.conf - Ossec config file for beats. Should be under roles/files.
+	* /vars/vars-rpi.yml - Playbook for ansible. Modify here
+	* /roles/... - Setup tasks to run for each role here.
 	
 
-## ELASTIC CONFIG (TO-ADD):
+## CONFIGS TO UPDATE STILL MANUAL:
 	xpack.ml.enabled: false
 
-## ELK STACK SETUP:
+### ELK STACK SETUP:
 	Run the modified ansible file, remove failed items.
 
-## LOGSTASH:
+### LOGSTASH:
 	.//usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
 	gem install ci_reporter_rspec -v '1.0.0'
 	gem install nokogiri -v '1.10.5'
@@ -36,7 +36,7 @@ Run the ansible setups. Short descriptions below for each file.
 	systemctl daemon-reload
 	systemctl enable logstash
 
-## KIBANA:
+### KIBANA:
 	wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 	dpkg -i node_latest_armhf.deb
 
@@ -60,13 +60,13 @@ Run the ansible setups. Short descriptions below for each file.
 
 	systemctl status kibana
  
-## FILEBEAT:
+### FILEBEAT:
 	scp .\filebeat-oss-6.5.4-armhf.deb root@192.168.1.109:/home/root/
 	dpkg -i filebeat-oss-6.5.4-armhf.deb
 
 	logstash-plugin update logstash-input-beats
 
-## OSSEC:
+### OSSEC:
 Install OSSEC from source
 
 	wget https://github.com/ossec/ossec-hids/archive/3.3.0.tar.gz
@@ -81,17 +81,17 @@ Install OSSEC from source
 Install wazuh plugin
 	
 ## TODO
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
+- [x] Finisha first push for my changes
+- [ ] Create playbook for Filebeat
+- [ ] Update existing playbooks with remaining changes
  
 ## LINKS:
-  https://practicalassurance.com/blog/ossec-elk-stack-integration/  
-  https://ackcent.com/blog/elk-on-a-raspberry-pi/
-  https://github.com/MHHK89/Snort-RPi-ELK
-  http://bagl.io/sec/2016/06/18/Balancing-an-ELK-on-top-of-a-Raspberry-part-one 
-  https://www.tripwire.com/state-of-security/security-data-protection/sweet-security-part-2-creating-a-defensible-raspberry-pi/
-  https://www.ossec.net/docs/cookbooks/recipes/elasticstack.html
+ * https://practicalassurance.com/blog/ossec-elk-stack-integration/  
+ * https://ackcent.com/blog/elk-on-a-raspberry-pi/
+ * https://github.com/MHHK89/Snort-RPi-ELK
+ * http://bagl.io/sec/2016/06/18/Balancing-an-ELK-on-top-of-a-Raspberry-part-one 
+ * https://www.tripwire.com/state-of-security/security-data-protection/sweet-security-part-2-creating-a-defensible-raspberry-pi/
+ * https://www.ossec.net/docs/cookbooks/recipes/elasticstack.html
 
 
 
