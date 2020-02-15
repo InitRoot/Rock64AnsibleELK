@@ -1,4 +1,9 @@
 # Rock64AnsibleELK
+[![Follow on Twitter](https://img.shields.io/twitter/follow/initroott?label=Follow%20&style=social)
+[![Medium Article](https://img.shields.io/badge/Medium-View%20Medium%20Article-blue)](https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa85bd833)
+![GitHub last commit](https://img.shields.io/github/last-commit/initroot/Rock64AnsibleELK)
+![GitHub stars](https://img.shields.io/github/stars/initroot/Rock64AnsibleELK)
+
 The below outlines my current automated (or progress towards) build for running ELK stack on a ROCK64.
 I've added OSSEC to the mix, but with modifications you can run anything. This is to be an update on my work published here:
 
@@ -19,19 +24,22 @@ https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa8
 Run the ansible setups. Short descriptions below for each file.
 
 * elk-rpi.yml - Base playbook. Setup variables under /vars and enable correct roles.
-* filebeat.yml - Filebeat config file for OSSEC.
 * hosts - Setup your IP and account used for Ansible. You'll see its currently defined as [RPI2]
-* logstash.yml - logstash config file.
-* ossec.conf - Ossec config file for beats. Should be under roles/files.
+* confbackups - Backup storage of my current config files.
 * /vars/vars-rpi.yml - Playbook for ansible. Modify here
 * /roles/... - Setup tasks to run for each role here.
 	
+It would be good for a quick introduction in Ansible, you can proceed to read here:
+
+https://www.guru99.com/ansible-tutorial.html
 
 ## CONFIGS TO UPDATE STILL MANUAL:
-	xpack.ml.enabled: false
+Run the below configurations manually after running the Anisble script. This has not been automated yet.
 
 ### ELK STACK SETUP:
-	Run the modified ansible file, remove failed items.
+	If you rerun the Ansible script remove failed items as its already installed and rerun. Can always attempt to do manually, but defeats the purpose.
+	
+	xpack.ml.enabled: false
 
 ### LOGSTASH:
 	.//usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
