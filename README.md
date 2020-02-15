@@ -13,11 +13,13 @@
    
 ## ANSIBLE:
 	- Run the ansible setups. Short descriptions below for each file.
-	* elk-rpi.yml
-	* filebeat.yml
-	* hosts
-	* logstash.yml
-	* ossec.conf
+	* elk-rpi.yml - Base playbook. Setup variables under /vars and enable correct roles.
+	* filebeat.yml - Filebeat config file for OSSEC.
+	* hosts - Setup your IP and account used for Ansible. You'll see its currently defined as [RPI2]
+	* logstash.yml - logstash config file.
+	* ossec.conf - Ossec config file for beats. Should be under roles/files.
+	* /vars/vars-rpi.yml - Playbook for ansible. Modify here
+	* /roles/... - Setup tasks to run for each role here.
 	
 
 ## ELASTIC CONFIG (TO-ADD):
@@ -79,9 +81,9 @@
 	Install wazuh plugin
 	
 ## TODO
-	- [x] Finish my changes
-	- [ ] Push my commits to GitHub
-	- [ ] Open a pull request
+- [x] Finish my changes
+- [ ] Push my commits to GitHub
+- [ ] Open a pull request
  
 ## LINKS:
   https://practicalassurance.com/blog/ossec-elk-stack-integration/  
