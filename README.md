@@ -1,9 +1,13 @@
 # Rock64AnsibleELK
+The below outlines my current automated (or progress towards) build for running ELK stack on a ROCK64.
+I've added OSSEC to the mix, but with modifications you can run anything. This is to be an update on my work published here:
 
-## ROCK64 SETUP:
+https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa85bd833
+
+## ROCK64 SETUP
 
 
-## PREP SETUP:
+### PREP SETUP:
 	sudo apt-get install npm ant texinfo default-jdk build-essential rbenv sshpass
 	sudo apt-get install ruby-dev
 	echo "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb buster main" | sudo tee /etc/apt/sources.list.d/adoptopenjdk.list
