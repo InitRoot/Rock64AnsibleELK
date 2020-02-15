@@ -1,6 +1,6 @@
 # Rock64AnsibleELK
 ![Follow on Twitter](https://img.shields.io/twitter/follow/initroott?label=Follow%20&style=social)
-![Medium Article](https://img.shields.io/badge/Medium-View%20Medium%20Article-blue)](https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa85bd833)
+[![Medium Article](https://img.shields.io/badge/Medium-View%20Medium%20Article-blue)](https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa85bd833)
 ![GitHub last commit](https://img.shields.io/github/last-commit/initroot/Rock64AnsibleELK)
 ![GitHub stars](https://img.shields.io/github/stars/initroot/Rock64AnsibleELK)
 
