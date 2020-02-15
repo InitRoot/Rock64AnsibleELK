@@ -26,7 +26,7 @@ Run the ansible setups. Short descriptions below for each file.
 * elk-rpi.yml - Base playbook. Setup variables under /vars and enable correct roles.
 * hosts - Setup your IP and account used for Ansible. You'll see its currently defined as [RPI2]
 * confbackups - Backup storage of my current config files.
-* /vars/vars-rpi.yml - Playbook for ansible. Modify here
+* /vars/vars-rpi.yml - Playbook for ansible. Modify here for download locations and version numbers.
 * /roles/... - Setup tasks to run for each role here.
 	
 It would be good for a quick introduction in Ansible, you can proceed to read here:
@@ -101,6 +101,7 @@ Install wazuh plugin
 - [ ] Create playbook for Filebeat
 - [ ] Update Logstash Playbook with new changes
 - [ ] Create playbook for OSSEC
+- [ ] Perform Cleanup and Debugging
  
 ## LINKS:
  * https://practicalassurance.com/blog/ossec-elk-stack-integration/  

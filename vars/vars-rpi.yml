@@ -4,7 +4,7 @@
 install_type: download-oracle
 #install_type: apt-oracle
 
-rpi_type: rpi3 #rpi2
+rpi_type: rpi2 #rpi2
 
 logstash_dir: /usr/share/logstash
 
@@ -12,16 +12,16 @@ java8link: http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff
 java8link_filename: jdk-8u131-linux-arm32-vfp-hflt.tar.gz
 java8link_dirname: jdk1.8.0_131
 
-elasticsearch_deb_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.deb
-elasticsearch_deb_filename: elasticsearch-6.5.4.deb
+elasticsearch_deb_url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.5.1-amd64.deb
+elasticsearch_deb_filename: elasticsearch-7.5.1-amd64.deb
 
-logstash_deb_url: https://artifacts.elastic.co/downloads/logstash/logstash-6.5.4.deb
-logstash_deb_filename: logstash-6.5.4.deb
+logstash_deb_url: https://artifacts.elastic.co/downloads/logstash/logstash-7.5.1.deb
+logstash_deb_filename: logstash-7.5.1.deb
 
 maxmind_url: http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz
 
-kibana_deb_url: https://artifacts.elastic.co/downloads/kibana/kibana-6.5.4-linux-x86_64.tar.gz
-kibana_deb_filename: kibana-6.5.4-linux-x86_64.tar.gz
-kibana_folder: kibana-6.5.4-linux-x86_64
+kibana_deb_url: https://artifacts.elastic.co/downloads/kibana/kibana-7.5.1-linux-x86_64.tar.gz
+kibana_deb_filename: kibana-7.5.1-linux-x86_64.tar.gz
+kibana_folder: kibana-7.5.1-linux-x86_64
 
 node_type: "npm" #"apt" #"arm"
