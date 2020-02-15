@@ -76,9 +76,14 @@
 
   - name: Config | configuration file
     copy:
-      src: 40-router-input.conf
+      src: ossec.conf
       dest: /etc/logstash/conf.d/
 
+  - name: Config | configuration file
+    copy:
+      src: syslog.conf
+      dest: /etc/logstash/conf.d/
+      
   - name: Config | upload lookup table file
     copy:
       src: service_names.yaml
@@ -104,8 +109,6 @@
       name: logstash
       state: started
       enabled: yes
-
-
 
   tags:
     - configuration
