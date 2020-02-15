@@ -12,7 +12,13 @@
 	Set correct imezone on Armbian
    
 ## ANSIBLE:
-	- Run the ansible GIT I modified.
+	- Run the ansible setups. Short descriptions below for each file.
+	* elk-rpi.yml
+	* filebeat.yml
+	* hosts
+	* logstash.yml
+	* ossec.conf
+	
 
 ## ELASTIC CONFIG (TO-ADD):
 	xpack.ml.enabled: false
@@ -71,6 +77,11 @@
 	./install.sh
 	 
 	Install wazuh plugin
+	
+## TODO
+	- [x] Finish my changes
+	- [ ] Push my commits to GitHub
+	- [ ] Open a pull request
  
 ## LINKS:
   https://practicalassurance.com/blog/ossec-elk-stack-integration/  
