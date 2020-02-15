@@ -67,7 +67,7 @@ Run the ansible setups. Short descriptions below for each file.
 	logstash-plugin update logstash-input-beats
 
 ## OSSEC:
-	- Install OSSEC from source
+Install OSSEC from source
 
 	wget https://github.com/ossec/ossec-hids/archive/3.3.0.tar.gz
 	tar -zxvf 3.3.0.tar.gz ossec-hids-3.3.0/
@@ -78,7 +78,7 @@ Run the ansible setups. Short descriptions below for each file.
 	tar xzf pcre2-10.32.tar.gz -C src/external
 	./install.sh
 	 
-	Install wazuh plugin
+Install wazuh plugin
 	
 ## TODO
 - [x] Finish my changes
