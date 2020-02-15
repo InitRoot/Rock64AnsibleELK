@@ -12,7 +12,7 @@
 	Set correct imezone on Armbian
    
 ## ANSIBLE:
-- Run the ansible setups. Short descriptions below for each file.
+Run the ansible setups. Short descriptions below for each file.
 * elk-rpi.yml - Base playbook. Setup variables under /vars and enable correct roles.
 * filebeat.yml - Filebeat config file for OSSEC.
 * hosts - Setup your IP and account used for Ansible. You'll see its currently defined as [RPI2]
