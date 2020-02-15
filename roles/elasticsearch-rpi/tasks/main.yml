@@ -39,9 +39,6 @@
       dest: /etc/elasticsearch/elasticsearch.yml
       line: 'xpack.ml.enabled: false'
 
-
-
-
   - name: Install | enable elasticsearch on boot
     service:
       name: elasticsearch

@@ -1,5 +1,5 @@
 # Rock64AnsibleELK
-[![Follow on Twitter](https://img.shields.io/twitter/follow/initroott?label=Follow%20&style=social)]
+![Follow on Twitter](https://img.shields.io/twitter/follow/initroott?label=Follow%20&style=social)
 [![Medium Article](https://img.shields.io/badge/Medium-View%20Medium%20Article-blue)](https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa85bd833)
 ![GitHub last commit](https://img.shields.io/github/last-commit/initroot/Rock64AnsibleELK)
 ![GitHub stars](https://img.shields.io/github/stars/initroot/Rock64AnsibleELK)
@@ -34,12 +34,10 @@ It would be good for a quick introduction in Ansible, you can proceed to read he
 https://www.guru99.com/ansible-tutorial.html
 
 ## CONFIGS TO UPDATE STILL MANUAL:
-Run the below configurations manually after running the Anisble script. This has not been automated yet.
+Run the below configurations manually after running the Anisble script. These have not been automated yet.
 
 ### ELK STACK SETUP:
 	If you rerun the Ansible script remove failed items as its already installed and rerun. Can always attempt to do manually, but defeats the purpose.
-	
-	xpack.ml.enabled: false
 
 ### LOGSTASH:
 	.//usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
@@ -49,30 +47,6 @@ Run the below configurations manually after running the Anisble script. This has
 	systemctl daemon-reload
 	systemctl enable logstash
 
-### KIBANA:
-	wget http://node-arm.herokuapp.com/node_latest_armhf.deb
-	dpkg -i node_latest_armhf.deb
-
-	sudo tar -xzf kibana-6.5.4-linux-x86_64.tar.gz -C /opt/
-	sudo mv -r /opt/kibana-6.5.4-linux-x86_64 /opt/kibana
-
-	 
-	Replace Kibana node with our one
-	sudo rm /opt/kibana/node/bin/node
-	sudo rm /opt/kibana/node/bin/npm
-
-	Symlink it
-	sudo ln -s /usr/local/bin/node /opt/kibana/node/bin/node
-	sudo ln -s /usr/local/bin/npm /opt/kibana/node/bin/npm
-
-	Ensure older node is used
-	sudo n install 8.14.0
-
-	Test run service for kibana
-	/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" --allow-root
-
-	systemctl status kibana
- 
 ### FILEBEAT:
 	scp .\filebeat-oss-6.5.4-armhf.deb root@192.168.1.109:/home/root/
 	dpkg -i filebeat-oss-6.5.4-armhf.deb
@@ -92,11 +66,41 @@ Install OSSEC from source
 	./install.sh
 	 
 Install wazuh plugin
+
+## Debugging
+
+### KIBANA:
+	#Manual steps (only run if automation fail and debugging):
+	wget http://node-arm.herokuapp.com/node_latest_armhf.deb
+	dpkg -i node_latest_armhf.deb
+
+	sudo tar -xzf kibana-6.5.4-linux-x86_64.tar.gz -C /opt/
+	sudo mv -r /opt/kibana-6.5.4-linux-x86_64 /opt/kibana
+
+	 
+	#Replace Kibana node with our one
+	sudo rm /opt/kibana/node/bin/node
+	sudo rm /opt/kibana/node/bin/npm
+
+	#Symlink it
+	sudo ln -s /usr/local/bin/node /opt/kibana/node/bin/node
+	sudo ln -s /usr/local/bin/npm /opt/kibana/node/bin/npm
+
+	#Ensure older node is used
+	sudo n install 8.14.0
+
+	#Test run service for kibana
+	/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" --allow-root
+
+	systemctl status kibana
 	
 ## TODO
-- [x] Finisha first push for my changes
+- [x] Logstash Playbook
+- [x] Elastic Playbook
+- [x] Kibana Playbook
 - [ ] Create playbook for Filebeat
-- [ ] Update existing playbooks with remaining changes
+- [ ] Update Logstash Playbook with new changes
+- [ ] Create playbook for OSSEC
  
 ## LINKS:
  * https://practicalassurance.com/blog/ossec-elk-stack-integration/  
