@@ -15,8 +15,10 @@ https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa8
 ### PREP SETUP:
 	sudo apt-get install npm ant texinfo default-jdk build-essential rbenv sshpass
 	sudo apt-get install ruby-dev
-	echo "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb buster main" | sudo tee /etc/apt/sources.list.d/adoptopenjdk.list
-	apt install adoptopenjdk-8-hotspot -y
+	wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+	sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+
+	sudo apt-get update && sudo apt-get install adoptopenjdk-8-hotspot
 	sudo update-alternatives --config java
 	Set correct imezone on Armbian
    
