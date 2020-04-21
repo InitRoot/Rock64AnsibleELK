@@ -11,6 +11,16 @@ https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa8
 
 ## NOTES TODO Apr 2020
 Dietpi --> Lower requirements
+
+### PREP SETUP:
+	sudo apt-get install npm ant texinfo build-essential rbenv sshpass
+	sudo apt-get install ruby-dev
+	wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+	sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+
+	sudo apt-get update && sudo apt-get install adoptopenjdk-8-hotspot
+	sudo update-alternatives --config java
+	
 ## Elastic 
 https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-b/187976/2
 ## Logstash
@@ -35,30 +45,42 @@ https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 	  shell: /usr/share/logstash/bin/logstash-plugin install logstash-filter-translate
 	  when: ("logstash-filter-translate" not in logstash_plugins.stdout)
 	  register: logstash_translate_install
-Run logstashfix.sh modifed to this git version
+	Run logstashfix.sh modifed to this git version
+
+	./usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
+	gem install ci_reporter_rspec -v '1.0.0'
+	gem install nokogiri -v '1.10.5'
+	  
+	systemctl daemon-reload
+	systemctl enable logstash
 
 
 ## Kibana Configs
-https://github.com/cblakely/openwrt-elk-dashboard
+	https://github.com/cblakely/openwrt-elk-dashboard
 	WGET new version 
 	sudo dpkg -i --force-all kibana-xxxxx
 	install the required nodejs for arm
-	replace the node with yours
-	which node
-	change node path in bin/kibana to NODE=/usr/bin/nodejs
+	#Replace Kibana node with our one
+	sudo rm /opt/kibana/node/bin/node
+	sudo rm /opt/kibana/node/bin/npm
+
+	#Symlink it
+	sudo ln -s /usr/local/bin/node /opt/kibana/node/bin/node
+	sudo ln -s /usr/local/bin/npm /opt/kibana/node/bin/npm
+
+	#Ensure older node is used
+	sudo n install 8.14.0
+
+	#Test run service for kibana
+	/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" --allow-root
+
+	systemctl status kibana
 
 
 # OLD BELOW
 		
 
-### PREP SETUP:
-	sudo apt-get install npm ant texinfo default-jdk build-essential rbenv sshpass
-	sudo apt-get install ruby-dev
-	wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-	sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 
-	sudo apt-get update && sudo apt-get install adoptopenjdk-8-hotspot
-	sudo update-alternatives --config java
 	Set correct imezone on Armbian
    
 ## ANSIBLE:
@@ -80,13 +102,7 @@ Run the below configurations manually after running the Anisble script. These ha
 ### ELK STACK SETUP:
 	If you rerun the Ansible script remove failed items as its already installed and rerun. Can always attempt to do manually, but defeats the purpose.
 
-### LOGSTASH:
-	.//usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
-	gem install ci_reporter_rspec -v '1.0.0'
-	gem install nokogiri -v '1.10.5'
-	  
-	systemctl daemon-reload
-	systemctl enable logstash
+
 
 ### FILEBEAT:
 	scp .\filebeat-oss-6.5.4-armhf.deb root@192.168.1.109:/home/root/
