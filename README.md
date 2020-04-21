@@ -40,6 +40,16 @@ Run logstashfix.sh modifed to this git version
 
 ## Kibana Configs
 https://github.com/cblakely/openwrt-elk-dashboard
+	WGET new version 
+	sudo dpkg -i --force-all kibana-xxxxx
+	install the required nodejs for arm
+	replace the node with yours
+	which node
+	change node path in bin/kibana to NODE=/usr/bin/nodejs
+
+
+##OLD BELOW
+		
 
 ### PREP SETUP:
 	sudo apt-get install npm ant texinfo default-jdk build-essential rbenv sshpass
