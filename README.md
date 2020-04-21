@@ -9,14 +9,14 @@ I've added OSSEC to the mix, but with modifications you can run anything. This i
 
 https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa85bd833
 
-## ROCK64 SETUP
-NOTES TODO Apr 2020
+## NOTES TODO Apr 2020
 Dietpi --> Lower requirements
 ## Elastic 
 https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-b/187976/2
 ## Logstash
 https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
-Run fix.sh modifed to this git version
+
+Run logstashfix.sh modifed to this git version
 
 
 ## Kibana Configs
