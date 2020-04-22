@@ -23,6 +23,16 @@ Dietpi --> Lower requirements
 	
 ## Elastic 
 https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-b/187976/2
+
+	dpkg -i --force-all --ignore-depends=libc6 elasticsearch-7-x-x.deb
+	relink java jdk with symlink.
+	sudo rm -r /usr/share/elasticsearch/jdk
+	sudo mkdir /usr/share/elasticsearch/jdk
+	which java 
+	sudo ln -s JAVAPATH /usr/share/elasticsearch/jdk
+	
+	
+	
 ## Logstash
 https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 
