@@ -27,12 +27,12 @@ https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-
 	dpkg -i --force-all --ignore-depends=libc6 elasticsearch-7-x-x.deb
 	relink java jdk with symlink.
 	sudo rm -r /usr/share/elasticsearch/jdk
-	sudo mkdir /usr/share/elasticsearch/jdk
+	sudo mkdir /usr/share/elasticsearch/jdk/bin
 	which java 
-	sudo ln -s JAVAPATH /usr/share/elasticsearch/jdk
+	sudo ln -s /usr/lib/jvm/adoptopenjdk-8-hotspot-arm64/bin/java /usr/share/elasticsearch/jdk/bin/java
 	sudo nano  /etc/default/elasticsearch
 	Change JAVA_PATH to correct one
-	
+	/usr/lib/jvm/adoptopenjdk-8-hotspot-arm64/bin/java
 	
 ## Logstash
 https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
