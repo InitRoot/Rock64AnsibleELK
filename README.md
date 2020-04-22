@@ -37,6 +37,8 @@ https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-
 ## Logstash
 https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 
+	1. Default install with dpkg -i --force-all logstash-7-x-x.deb
+	
 	- name: download maxmind geoip database
 	  get_url:
 	    url: http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz
@@ -47,18 +49,11 @@ https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 	  shell: 'gunzip < /tmp/GeoLite2-City.mmdb.gz > /etc/logstash/GeoLite2-City.mmdb'
 	  when: geoip_db_dl|changed
 
-	- name: check logstash filter list
-	  shell: /usr/share/logstash/bin/logstash-plugin list
-	  changed_when: false
-	  register: logstash_plugins
-
-	- name: install logstash translate filter plugin
-	  shell: /usr/share/logstash/bin/logstash-plugin install logstash-filter-translate
-	  when: ("logstash-filter-translate" not in logstash_plugins.stdout)
-	  register: logstash_translate_install
 	Run logstashfix.sh modifed to this git version
 
-	./usr/share/logstash/bin/logstash-plugin install logstash-filter-translate  
+	/usr/share/logstash/bin/logstash-plugin install logstash-filter-translate
+	/usr/share/logstash/bin/logstash-plugin install logstash-codec-netflow
+	/usr/share/logstash/bin/logstash-plugin list 
 	gem install ci_reporter_rspec -v '1.0.0'
 	gem install nokogiri -v '1.10.5'
 	  
