@@ -30,7 +30,8 @@ https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-
 	sudo mkdir /usr/share/elasticsearch/jdk
 	which java 
 	sudo ln -s JAVAPATH /usr/share/elasticsearch/jdk
-	
+	sudo nano  /etc/default/elasticsearch
+	Change JAVA_PATH to correct one
 	
 	
 ## Logstash
