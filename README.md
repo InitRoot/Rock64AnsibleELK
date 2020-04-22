@@ -30,9 +30,10 @@ https://discuss.elastic.co/t/elasticsearch-7-x-support-for-arm64-raspberry-pi-4-
 	sudo mkdir /usr/share/elasticsearch/jdk/bin
 	which java 
 	sudo ln -s /usr/lib/jvm/adoptopenjdk-8-hotspot-arm64/bin/java /usr/share/elasticsearch/jdk/bin/java
-	sudo nano  /etc/default/elasticsearch
-	Change JAVA_PATH to correct one
-	/usr/lib/jvm/adoptopenjdk-8-hotspot-arm64/bin/java
+	#Update packages to ignore libc6
+	sudo nano /var/lib/dpkg/status
+	#Remove libc from elastic
+	
 	
 ## Logstash
 https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
@@ -63,9 +64,9 @@ https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 
 ## Kibana Configs
 	https://github.com/cblakely/openwrt-elk-dashboard
-	WGET new version 
+	#WGET new version 
 	sudo dpkg -i --force-all kibana-xxxxx
-	install the required nodejs for arm
+	#install the required nodejs for arm
 	#Replace Kibana node with our one
 	sudo rm /opt/kibana/node/bin/node
 	sudo rm /opt/kibana/node/bin/npm
@@ -74,8 +75,10 @@ https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 	sudo ln -s /usr/local/bin/node /opt/kibana/node/bin/node
 	sudo ln -s /usr/local/bin/npm /opt/kibana/node/bin/npm
 
-	#Ensure older node is used
-	sudo n install 8.14.0
+	#Get ruby ready	
+	npm install -g n
+	n lts
+	sudo n install 10.19.0
 
 	#Test run service for kibana
 	/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" --allow-root
@@ -85,10 +88,6 @@ https://gist.github.com/alexalouit/a857a6de10dfdaf7485f7c0cccadb98c
 
 # OLD BELOW
 		
-
-
-	Set correct imezone on Armbian
-   
 ## ANSIBLE:
 Run the ansible setups. Short descriptions below for each file.
 
@@ -102,61 +101,7 @@ It would be good for a quick introduction in Ansible, you can proceed to read he
 
 https://www.guru99.com/ansible-tutorial.html
 
-## CONFIGS TO UPDATE STILL MANUAL:
-Run the below configurations manually after running the Anisble script. These have not been automated yet.
 
-### ELK STACK SETUP:
-	If you rerun the Ansible script remove failed items as its already installed and rerun. Can always attempt to do manually, but defeats the purpose.
-
-
-
-### FILEBEAT:
-	scp .\filebeat-oss-6.5.4-armhf.deb root@192.168.1.109:/home/root/
-	dpkg -i filebeat-oss-6.5.4-armhf.deb
-
-	logstash-plugin update logstash-input-beats
-
-### OSSEC:
-Install OSSEC from source
-
-	wget https://github.com/ossec/ossec-hids/archive/3.3.0.tar.gz
-	tar -zxvf 3.3.0.tar.gz ossec-hids-3.3.0/
-	cd ossec-hids-3.3.0/
-	sudo PCRE2_SYSTEM=yes ./install.sh
-	wget https://ftp.pcre.org/pub/pcre/pcre2-10.32.tar.gz
-	ls
-	tar xzf pcre2-10.32.tar.gz -C src/external
-	./install.sh
-	 
-Install wazuh plugin
-
-## Debugging
-
-### KIBANA:
-	#Manual steps (only run if automation fail and debugging):
-	wget http://node-arm.herokuapp.com/node_latest_armhf.deb
-	dpkg -i node_latest_armhf.deb
-
-	sudo tar -xzf kibana-6.5.4-linux-x86_64.tar.gz -C /opt/
-	sudo mv -r /opt/kibana-6.5.4-linux-x86_64 /opt/kibana
-
-	 
-	#Replace Kibana node with our one
-	sudo rm /opt/kibana/node/bin/node
-	sudo rm /opt/kibana/node/bin/npm
-
-	#Symlink it
-	sudo ln -s /usr/local/bin/node /opt/kibana/node/bin/node
-	sudo ln -s /usr/local/bin/npm /opt/kibana/node/bin/npm
-
-	#Ensure older node is used
-	sudo n install 8.14.0
-
-	#Test run service for kibana
-	/opt/kibana/bin/kibana  "-c /opt/kibana/config/kibana.yml" --allow-root
-
-	systemctl status kibana
-	
 ## TODO
 - [x] Logstash Playbook
 - [x] Elastic Playbook
