@@ -13,7 +13,7 @@ https://medium.com/@fbotes2/secure-dns-ids-and-wifi-ap-using-arm64-rock64-a0faa8
 Dietpi --> Lower requirements
 
 ### PREP SETUP:
-	sudo apt-get install npm ant texinfo build-essential rbenv sshpass
+	sudo apt-get install npm ant texinfo build-essential rbenv sshpass software-properties-common
 	sudo apt-get install ruby-dev
 	wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
 	sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
